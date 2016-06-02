@@ -9,8 +9,8 @@ class Graph
 {
 private:
     int num_of_vertices;
-    vector<int> *Adj;
-//    vector< vector<int> > Adj;
+//    vector<int> *Adj;
+    vector< vector<int> > Adj;
 public:
     Graph(int V);
     ~Graph();
@@ -22,11 +22,12 @@ public:
 Graph::Graph(int V)
 {
     this->num_of_vertices = V;
-    Adj = new vector<int>[V];
+//    Adj = new vector<int>[V];
+    Adj.resize(V);
 }
 
 Graph::~Graph() {
-    delete[] Adj;
+//    delete[] Adj;
 }
 
 void Graph::addEdge(int from, int to)
@@ -36,8 +37,8 @@ void Graph::addEdge(int from, int to)
 
 void Graph::BFS(int Start)
 {
-    bool* visited = new bool[this->num_of_vertices]();
-//    std::vector<bool> visited(num_of_vertices);
+//    bool* visited = new bool[this->num_of_vertices]();
+    std::vector<bool> visited(this->num_of_vertices);
     queue<int> queue;
     queue.push(Start);
 
@@ -55,13 +56,13 @@ void Graph::BFS(int Start)
         }
     }
     cout << endl;
-    delete[] visited;
+//    delete[] visited;
 }
 
 void Graph::DFS(int Start)
 {
-    bool* visited = new bool[this->num_of_vertices]();
-//    std::vector<bool> visited(num_of_vertices);
+//    bool* visited = new bool[this->num_of_vertices]();
+    std::vector<bool> visited(this->num_of_vertices);
     stack<int> stack;
     stack.push(Start);
 
@@ -79,7 +80,7 @@ void Graph::DFS(int Start)
         }
     }
     cout << endl;
-    delete[] visited;
+//    delete[] visited;
 }
 
 int main() {
